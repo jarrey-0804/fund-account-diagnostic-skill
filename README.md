@@ -1,7 +1,7 @@
-# 基金账户诊断系统
+# 基金账户诊断 Skill
 
 <p align="center">
-  <strong>专业的基金投资组合诊断分析工具</strong><br>
+  <strong>Qoder Agent Skill — 基金投资组合综合诊断分析</strong><br>
   持仓分析 · 收益计算 · 风险评估 · 配置诊断 · 调仓建议
 </p>
 
@@ -9,38 +9,52 @@
 
 ## 项目简介
 
-基金账户诊断系统是一个面向基金交易数据的综合分析工具。它可以根据基金代码列表或交易记录 Excel 文件，生成包含 9 大分析模块的结构化诊断报告（JSON / HTML），帮助投资者全面了解基金组合的健康状况。
+本项目是一个 **Qoder Agent Skill**，为 AI 智能体提供基金账户综合诊断分析能力。通过上传交易记录 Excel 或提供基金代码列表，Skill 可自动生成包含 9 大分析模块的结构化诊断报告（JSON / HTML），帮助用户全面了解基金组合的健康状况。
+
+### 什么是 Qoder Skill？
+
+Qoder Skill 是一种 AI 智能体技能包，定义了 AI 在特定场景下的角色、知识和操作流程。本 Skill 会被 Qoder 平台打包为 `.skill` 文件（zip 格式），供 AI 智能体在对话中按需调用。
 
 ### 核心能力
 
-- **交易记录解析** — 支持申购/赎回/分红/转换/定投等多种业务类型的 Excel 交易记录
+- **交易记录解析** — 自动识别 Excel 中的申购/赎回/分红/转换/定投等多种业务类型
 - **9 大诊断模块** — 账户总览、持仓概览、收益风险、风险提示、配置诊断、相关性分析、基金评价、调仓建议、报告总结
 - **HTML 可视化报告** — 内置 13 种 ECharts 交互式图表，品牌色设计，响应式布局
 - **自动降级机制** — API 不可用时自动切换为模拟数据，确保报告正常生成
 
 ## 快速开始
 
-### 环境要求
+### 安装 Skill
+
+将本项目导入 Qoder 平台，或直接使用打包好的 `fund-account-diagnostic.skill` 文件。
+
+### 运行环境
 
 - Python 3.8+
-- 依赖：pandas、numpy、empyrical（可选加速）
-
-### 安装依赖
+- 依赖：pandas、numpy、empyrical（可选加速）、coze_workload_identity
 
 ```bash
 cd fund-account-diagnostic
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 ### 使用方式
 
-**方式一：通过基金代码列表**
+用户在 Qoder 对话中触发 Skill，例如：
+
+- "诊断我的基金账户"
+- "分析我的基金持仓"
+- "根据交易记录生成诊断报告"
+
+也可以通过命令行直接运行脚本：
+
+**通过基金代码列表**
 
 ```bash
 python scripts/diagnostic_report.py --funds 000001,000002,000003
 ```
 
-**方式二：通过交易记录 Excel（推荐）**
+**通过交易记录 Excel（推荐）**
 
 ```bash
 python scripts/diagnostic_report.py --transaction-file ./transactions.xlsx
@@ -50,12 +64,6 @@ python scripts/diagnostic_report.py --transaction-file ./transactions.xlsx
 
 ```bash
 python scripts/diagnostic_report.py --funds 000001,000002 --format html --output report.html
-```
-
-**查看交易统计**
-
-```bash
-python scripts/diagnostic_report.py --transaction-file ./transactions.xlsx --show-stats
 ```
 
 **指定模块诊断**
@@ -92,6 +100,7 @@ python scripts/diagnostic_report.py --funds 000001,000002 --modules overview,per
 
 ```
 fund-account-diagnostic/
+├── SKILL.md                      # Skill 定义文件（角色、步骤、指标规格）
 ├── scripts/
 │   ├── diagnostic_report.py      # 主入口，编排 9 模块报告生成
 │   ├── generators.py             # 9 个模块生成器函数
@@ -106,9 +115,9 @@ fund-account-diagnostic/
 ├── references/
 │   ├── indicator_spec.md         # 指标规格说明
 │   └── output_format.md          # 报告输出格式定义
-├── SKILL.md                      # Agent Skill 定义文件
 ├── requirements.txt              # Python 依赖
 └── .gitignore
+fund-account-diagnostic.skill    # Skill 打包文件（zip 格式，可直接导入 Qoder）
 ```
 
 ## 数据源
