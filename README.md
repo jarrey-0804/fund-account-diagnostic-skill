@@ -1,7 +1,7 @@
 # 基金账户诊断 Skill
 
 <p align="center">
-  <strong>Qoder Agent Skill — 基金投资组合综合诊断分析</strong><br>
+  <strong>基金投资组合综合诊断分析技能包</strong><br>
   持仓分析 · 收益计算 · 风险评估 · 配置诊断 · 调仓建议
 </p>
 
@@ -9,11 +9,11 @@
 
 ## 项目简介
 
-本项目是一个 **Qoder Agent Skill**，为 AI 智能体提供基金账户综合诊断分析能力。通过上传交易记录 Excel 或提供基金代码列表，Skill 可自动生成包含 9 大分析模块的结构化诊断报告（JSON / HTML），帮助用户全面了解基金组合的健康状况。
+本项目是一个 **AI Agent Skill**，为智能体提供基金账户综合诊断分析能力。通过上传交易记录 Excel 或提供基金代码列表，Skill 可自动生成包含 9 大分析模块的结构化诊断报告（JSON / HTML），帮助用户全面了解基金组合的健康状况。
 
-### 什么是 Qoder Skill？
+### 什么是 Skill？
 
-Qoder Skill 是一种 AI 智能体技能包，定义了 AI 在特定场景下的角色、知识和操作流程。本 Skill 会被 Qoder 平台打包为 `.skill` 文件（zip 格式），供 AI 智能体在对话中按需调用。
+Skill 是一种 AI 智能体技能包，定义了 AI 在特定场景下的角色、知识和操作流程。本 Skill 以 `.skill` 文件（zip 格式）打包，供 AI 智能体在对话中按需调用。
 
 ### 核心能力
 
@@ -26,7 +26,7 @@ Qoder Skill 是一种 AI 智能体技能包，定义了 AI 在特定场景下的
 
 ### 安装 Skill
 
-将本项目导入 Qoder 平台，或直接使用打包好的 `fund-account-diagnostic.skill` 文件。
+将项目中的 `fund-account-diagnostic.skill` 文件导入对应的 AI Agent 平台即可。
 
 ### 运行环境
 
@@ -40,7 +40,7 @@ pip3 install -r requirements.txt
 
 ### 使用方式
 
-用户在 Qoder 对话中触发 Skill，例如：
+用户在对话中触发 Skill，例如：
 
 - "诊断我的基金账户"
 - "分析我的基金持仓"
@@ -117,7 +117,7 @@ fund-account-diagnostic/
 │   └── output_format.md          # 报告输出格式定义
 ├── requirements.txt              # Python 依赖
 └── .gitignore
-fund-account-diagnostic.skill    # Skill 打包文件（zip 格式，可直接导入 Qoder）
+fund-account-diagnostic.skill    # Skill 打包文件（zip 格式，可直接导入 AI Agent 平台）
 ```
 
 ## 数据源
